@@ -9,13 +9,17 @@ import com.app.microservices.currencyconversionservice.bean.CurrencyConversion;
 
 
 //@FeignClient(name="currency-exchange-service",url="http://localhost:8000")
-@FeignClient(name="currency-exchange-service")
+//@FeignClient(name="currency-exchange-service")
+@FeignClient(name="netflix-Zuul-Api-Gateway-Server")
 @RibbonClient(name="currency-exchange-service")
 public interface CurrencyExchangeServiceProxy {
 	
-	@GetMapping("/currency-exchange/from/{from}/to/{to}")
+	/*@GetMapping("/currency-exchange/from/{from}/to/{to}")
+	public CurrencyConversion retrieveExchangeValue(@PathVariable("from") String from,@PathVariable("to") String to);
+*/
+	
+	@GetMapping("/currency-exchange-service/currency-exchange/from/{from}/to/{to}")
 	public CurrencyConversion retrieveExchangeValue(@PathVariable("from") String from,@PathVariable("to") String to);
 
-	
 		
 }
